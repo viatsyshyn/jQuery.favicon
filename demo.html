@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>hwa.favicon demo</title>
+<link rel="shortcut icon" href="images/mail_icon_32.png" type="image/x-icon" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="src/jquery.favicon.js"></script>
+<script type="text/javascript" src="src/jquery.favicon.examples.js"></script>
+</head>
+<body>
+<h3>Example 1: Change favicon</h3>
+<pre class="brush:javascript">jQuery.favicon('images/mail_icon_32_active.png');"</pre>
+<button onclick="example1();">run</button><br />
+
+<h3 id="example2">Example 2: Draw something on favicon before apply</h3>
+<pre class="brush:javascript">jQuery.favicon('images/mail_icon_32_new_message_active_g.png', function (ctx) {
+  ctx.font = 'bold 15px "helvetica", sans-serif';
+  ctx.fillStyle = '#FF0000';
+  ctx.fillText('XX', 10, 27);
+});</pre>
+<button onclick="example2();">run</button><br />
+
+<h3 id="example3">Example 3: Draw something on favicon and provide custom alternative URL</h3>
+<pre class="brush:javascript">jQuery.favicon('images/mail_icon_32_new_message_active_w.png', 'images/mail_icon_32_active.png', function (ctx) {
+  ctx.font = 'bold 15px "helvetica", sans-serif';
+  ctx.fillStyle = '#FF00FF';
+  ctx.fillText('10', 10, 27);
+});</pre>
+<button onclick="example3()">run</button><br />
+
+<h3 id="example4">Example 4: Simple blink effect jQuery.favicon.animate()</h3>
+<pre class="brush:javascript">
+  var bool = false;
+  function blink(button) {
+    if (bool) {
+       bool = false;
+       jQuery.favicon.unanimate();
+       return ;
+    }
+	
+    jQuery.favicon.animate('images/mail_icon_32_new_message_animation.png', 'images/mail_icon_32_new_message.png', {
+      frames: [1, 0],
+      interval: 500,
+      onDraw: function (ctx, frame) {
+        ctx.font = 'bold 15px "helvetica", sans-serif';
+        ctx.fillStyle = '#333333';
+        ctx.fillText(count, 10, 27);
+        if (Math.random() > .95)
+          count++;
+      },
+      onStop: function () {
+        jQuery.favicon('images/mail_icon_32.png');
+      }
+    });
+ }
+</pre>
+<button onclick="example4();">run/stop</button><br /> 
+</body>
+</html>

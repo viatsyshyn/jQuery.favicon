@@ -1,10 +1,10 @@
 (function () {
 	this.example1 = function () {
-		jQuery.favicon('mail_icon_32_active.png');
+		jQuery.favicon('images/mail_icon_32_active.png');
 	}
 
 	this.example2 = function () {
-		jQuery.favicon('mail_icon_32_new_message_active_g.png', function (ctx) {
+		jQuery.favicon('images/mail_icon_32_new_message_active_g.png', function (ctx) {
 			ctx.font = 'bold 15px "helvetica", sans-serif';
 			ctx.fillStyle = '#FF0000';
 			ctx.fillText('XX', 10, 27);
@@ -12,7 +12,7 @@
 	}
 
 	this.example3 = function () {
-		jQuery.favicon('mail_icon_32_new_message_active_w.png', 'mail_icon_32_active.png', function (ctx) {
+		jQuery.favicon('images/mail_icon_32_new_message_active_w.png', 'images/mail_icon_32_active.png', function (ctx) {
 			ctx.font = 'bold 15px "helvetica", sans-serif';
 			ctx.fillStyle = '#FF00FF';
 			ctx.fillText('10', 10, 27);
@@ -29,8 +29,8 @@
 		
 		bool = true; 
 		var count = 1;
-		jQuery.favicon.animate('mail_icon_32_new_message_animation.png'
-				, 'mail_icon_32_new_message.png', {
+		jQuery.favicon.animate('images/mail_icon_32_new_message_animation.png'
+				, 'images/mail_icon_32_new_message.png', {
 			frames: [1, 0],
 			interval: 500,
 			onDraw: function (ctx) {
@@ -41,7 +41,7 @@
 					count++;
 			},
 			onStop: function () {
-				jQuery.favicon('mail_icon_32.png');
+				jQuery.favicon('images/mail_icon_32.png');
 			}
 		});
 	}
