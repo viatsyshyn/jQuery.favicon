@@ -50,8 +50,8 @@ jQuery.favicon.unanimate = function () {};
 </pre>
 <h2 id="animation">Animating with <em>jQuery.favicon.animate()</em></h2>
 <p><strong>jQuery.favicon.animate</strong> is simple frames based animation implementation. This aproach requires image with all animation frames joined horizontally, like on image bellow</p>
-<p><img width="256" height="128" src="mail_icon_32_new_message_animation.png" /><br/>
-<small>Sample 2 frames animation image used in <a href="#example4">example 4</a></small>
+<p><img width="256" height="128" src="images/mail_icon_32_new_message_animation.png" /><br/>
+<small>Sample 2 frames animation image used in example 4</small>
 </p>
 
 <h2>Download</h2>
