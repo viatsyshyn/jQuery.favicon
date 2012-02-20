@@ -54,9 +54,6 @@ jQuery.favicon.unanimate = function () {};
 <small>Sample 2 frames animation image used in example 4</small>
 </p>
 
-<h2>Download</h2>
-<p>Vesion 0.1: <a href="jquery.favicon.js">jquery.favicon.js</a></p>
-
 <h2>Usage examples</h2>
 <h3>Example 1: Change favicon</h3>
 <pre class="brush:javascript">jQuery.favicon('mail_icon_32_active.png');"</pre>
