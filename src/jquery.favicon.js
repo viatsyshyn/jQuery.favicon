@@ -10,16 +10,16 @@
  * @url http://hellowebapps.com/products/jquery-favicon/
  * @version 0.2.1
  */
- 
-(function($){
+
+(function($) {
 
   var canvas;
 
-  function apply (url) {
+  function apply(url) {
     $('link[rel$=icon]').replaceWith('');
-		$('head').append(
-		    $('<link rel="shortcut icon" type="image/x-icon"/>')
-				.attr('href', url));    
+    $('<link rel="shortcut icon" type="image/x-icon"/>')
+      .appendTo('head')
+      .attr('href', url);
   }
 
   /**
@@ -35,43 +35,43 @@
    */
   $.favicon = function(iconURL, alternateURL, onDraw) {
 
-		if (arguments.length == 2) {
-			// alternateURL is optional
-			onDraw = alternateURL;
-		}
-	
-		if (onDraw) {
-			canvas = canvas || $('<canvas />')[0];
-			if (canvas.getContext) {
-				var img = $('<img />')[0];
-				img.onload = function () {
-          $.favicon.unanimate();                    
+    if (arguments.length == 2) {
+      // alternateURL is optional
+      onDraw = alternateURL;
+    }
+
+    if (onDraw) {
+      canvas = canvas || $('<canvas />')[0];
+      if (canvas.getContext) {
+        var img = $('<img />')[0];
+        img.onload = function () {
+          $.favicon.unanimate();
           canvas.height = canvas.width = this.width;
-					var ctx = canvas.getContext('2d');
-					ctx.drawImage(this, 0, 0);
-					onDraw(ctx);
-					apply(canvas.toDataURL('image/png'));
-				};
-				img.src = iconURL;
-			} else {
-				apply(alternateURL || iconURL);
-			}
-		} else {
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(this, 0, 0);
+          onDraw(ctx);
+          apply(canvas.toDataURL('image/png'));
+        };
+        img.src = iconURL;
+      } else {
+        apply(alternateURL || iconURL);
+      }
+    } else {
       $.favicon.unanimate();
-      
+
       apply(iconURL);
-		}
-		
-		return this;
-	};
+    }
+
+    return this;
+  };
 
   var animation = {
-      timer: null,
-      frames: [],
-      size: 16,
-      count: 1
+    timer: null,
+    frames: [],
+    size: 16,
+    count: 1
   };
-    
+
   $.extend($.favicon, {
     /**
      * jQuery.favicon.animate - starts frames based animation
@@ -84,33 +84,33 @@
      * function (animationURL, alternateURL, {
      *   interval: 1000, // change frame in X ms, default is 1000ms
      *   onDraw: function (context, frame) {}, // is called each frame
-		 *   onStop: function () {}, // is called on animation stop
+     *   onStop: function () {}, // is called on animation stop
      *   frames: [1,3,5] // display frames in this exact order, defaults is all frames
      * })
      */
     animate: function (animationURL, alternateURL, options) {
       options = options || {};
-              
+
       canvas = canvas || $('<canvas />')[0];
-			if (canvas.getContext) {
-				var img = $('<img />')[0];
-				img.onload = function () {
+      if (canvas.getContext) {
+        var img = $('<img />')[0];
+        img.onload = function () {
 
           $.favicon.unanimate();
 
-					animation.onStop = options.onStop;
-					
+          animation.onStop = options.onStop;
+
           animation.image = this;
           canvas.height = canvas.width = animation.size = this.height;
           animation.count = this.width / this.height;
-          
+
           var frames = [];
           for (var i = 0; i < animation.count; ++i) frames.push(i);
           animation.frames = options.frames || frames;
 
-					var ctx = canvas.getContext('2d');
+          var ctx = canvas.getContext('2d');
 
-					options.onStart && options.onStart();
+          options.onStart && options.onStart();
           animation.timer = setInterval(function () {
             // get current frame
             var frame = animation.frames.shift();
@@ -118,15 +118,15 @@
 
             // check if frame exists
             if (frame >= animation.count) {
-                clearInterval(animation.timer);
-                animation.timer = null;
-                
-                throw new Error('jQuery.favicon.animate: frame #' + frame + ' do not exists in "' + animationURL + '"');
+              clearInterval(animation.timer);
+              animation.timer = null;
+
+              throw new Error('jQuery.favicon.animate: frame #' + frame + ' do not exists in "' + animationURL + '"');
             }
 
             // draw frame
             var s = animation.size;
-            ctx.clearRect(0,0,s,s);
+            ctx.clearRect(0, 0, s, s);
             ctx.drawImage(animation.image, s * frame, 0, s, s, 0, 0, s, s);
 
             // User Draw event
@@ -135,11 +135,11 @@
             // set favicon
             apply(canvas.toDataURL('image/png'));
           }, options.interval || 1000);
-				};
-				img.src = animationURL;
-			} else {
-				apply(alternateURL || animationURL);
-			}
+        };
+        img.src = animationURL;
+      } else {
+        apply(alternateURL || animationURL);
+      }
     },
 
     /**
@@ -149,7 +149,7 @@
       if (animation.timer) {
         clearInterval(animation.timer);
         animation.timer = null;
-    
+
         animation.onStop && animation.onStop();
       }
     }
