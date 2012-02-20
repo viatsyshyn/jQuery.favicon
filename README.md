@@ -1,31 +1,8 @@
-<html>
-<head>
-<title>hwa.favicon demo</title>
-<link rel="shortcut icon" href="mail_icon_32.png" type="image/x-icon" />
-<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="jquery.favicon.js"></script>
-<script type="text/javascript" src="jquery.favicon.examples.js"></script>
-</head>
-<body>
 <h1>jQuery Favicon plugin</h1>
 <p>Favicon is jQuery plugin that helps you manipulate browser's <a href="http://en.wikipedia.org/wiki/Favicon" target="_blank">favicon</a>. It allows you to change favicon dynamicly. If browser supports <em>HTML5 Canvas</em> element you can draw on icon before using it. Also you can provide alternative icon if broswer do not support canvas.</p>
 <p><strong>Browser support</strong>: Firefox 3.5, Opera 9, Chrome 4.<br />
 <b><small><em>Note: IE and Safari do not support dynamic favicon change.</em></small></b></p>
 <p><small><i>Note: Canvas is supported by Firefox 4.0b1+, Opera 10+, Chrome 6+, Safari 5+, IE9+</i></small></p>
-<h3>Content</h3>
-<ol>
-	<li><a href="#plugin-interface">Plugin interface</a></li>
-	<li><a href="#animation">Animating with jQuery.favicon.animate()</a></li>
-	<li><a href="#download">Download</a></li>
-	<li><a href="#examples">Examples</a>
-		<ol>
-			<li><a href="#example1">Example 1: Change favicon</a></li>
-			<li><a href="#example2">Example 2: Draw something on favicon before apply</a></li>
-			<li><a href="#example3">Example 3: Draw something on favicon and provide custom alternative URL</a></li>
-			<li><a href="#example4">Example 4: Simple blink effect jQuery.favicon.animate()</a></li>
-		</ol>
-	</li>
-</ol>
 
 <h2>Plugin interface</h2>
 <pre class="brush:javascript">
@@ -83,7 +60,6 @@ jQuery.favicon.unanimate = function () {};
 <h2>Usage examples</h2>
 <h3>Example 1: Change favicon</h3>
 <pre class="brush:javascript">jQuery.favicon('mail_icon_32_active.png');"</pre>
-<button onclick="example1();">run</button><br />
 
 <h3 id="example2">Example 2: Draw something on favicon before apply</h3>
 <pre class="brush:javascript">jQuery.favicon('mail_icon_32_new_message_active_g.png', function (ctx) {
@@ -91,7 +67,6 @@ jQuery.favicon.unanimate = function () {};
   ctx.fillStyle = '#FF0000';
   ctx.fillText('XX', 10, 27);
 });</pre>
-<button onclick="example2();">run</button><br />
 
 <h3 id="example3">Example 3: Draw something on favicon and provide custom alternative URL</h3>
 <pre class="brush:javascript">jQuery.favicon('mail_icon_32_new_message_active_w.png', 'mail_icon_32_active.png', function (ctx) {
@@ -99,7 +74,6 @@ jQuery.favicon.unanimate = function () {};
   ctx.fillStyle = '#FF00FF';
   ctx.fillText('10', 10, 27);
 });</pre>
-<button onclick="example3()">run</button><br />
 
 <h3 id="example4">Example 4: Simple blink effect jQuery.favicon.animate()</h3>
 <pre class="brush:javascript">
@@ -127,6 +101,3 @@ jQuery.favicon.unanimate = function () {};
     });
  }
 </pre>
-<button onclick="example4();">run/stop</button><br /> 
-</body>
-</html>
